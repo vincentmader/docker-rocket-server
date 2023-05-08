@@ -1,0 +1,21 @@
+version: "3.3"
+
+services:
+  web-server:
+    build: .
+    restart: always
+    environment:
+      VIRTUAL_HOST: test.lo     # TODO: Define domain(s) here...
+      # LETSENCRYPT_HOST:       # TODO: ...and here.
+      # LETSENCRYPT_EMAIL: vincent.mader@icloud.com
+    ports:
+      - 8314:8000               # TODO: Define external port number.
+    networks:
+      - reverse-proxy
+
+networks:
+  reverse-proxy:
+    external: true
+    name: proxy_mxyz_proxy_network 
+    # ^ This has to be the same name as specified in `./proxy/docker-compose.yml`.
+    #   Additionally, it is prefixed by the proxy directory name (see "docker network ls").
