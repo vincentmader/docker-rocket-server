@@ -1,5 +1,7 @@
 [debug]
 template_dir = "./templates"
+address = "127.0.0.1"
 
 [release]
 template_dir = "./templates"
+address = "0.0.0.0"
